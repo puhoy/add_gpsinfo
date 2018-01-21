@@ -26,7 +26,7 @@ class ExifImage:
     def has_gps_data(self):
         for tag in ["Exif.GPSInfo.GPSLatitude", "Exif.GPSInfo.GPSLatitudeRef", "Exif.GPSInfo.GPSLongitude",
                     "Exif.GPSInfo.GPSLongitudeRef"]:
-            if tag in self.exiv_image.keys():
+            if tag in self.exiv_image.keys() and self.exiv_image.get(tag, '') is not '':
                 return True
         return False
 
@@ -58,12 +58,6 @@ class ExifImage:
 
         # convert decimal coordinates into degrees, minutes and seconds
 
-        print(lat_deg[0] * 60 + lat_deg[1])
-        print(lat_deg[2] * 100)
-        print(lng_deg[0] * 60 + lng_deg[1])
-        print(lng_deg[2] * 100)
-        print()
-        print()
         exiv_lat = [fractions.Fraction(lat_deg[0] * 60 + lat_deg[1], 60), fractions.Fraction(lat_deg[2] * 100, 6000),
                     fractions.Fraction(0, 1)]
         exiv_lng = [fractions.Fraction(lng_deg[0] * 60 + lng_deg[1], 60), fractions.Fraction(lng_deg[2] * 100, 6000),

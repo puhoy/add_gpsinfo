@@ -17,9 +17,10 @@ def add_gpsdata(image_path, all_coords, max_diff, allow_overwrite):
         print(f'skipping {image_path}: no timestamp found in exif data')
         return
 
-    if not allow_overwrite or exif_image.has_gps_data():
-        print(f'image {image_path} has gps data. skipping.')
-        return
+    if not allow_overwrite:
+        if exif_image.has_gps_data():
+            print(f'image {image_path} has gps data. skipping.')
+            return
 
     timestamp = exif_image.get_timestamp()
     coords = all_coords.get_coords_for_timestamp(timestamp, max_diff)
