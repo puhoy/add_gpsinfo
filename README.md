@@ -19,12 +19,12 @@ afterwards install the stuff in requirements.txt (maybe in a virtualenv)
 
     $ python add_gpsinfo.py --help
     Usage: add_gpsinfo.py [OPTIONS]
-    
+
     Options:
       --image PATH        image or folder with images
-      --gpx PATH          gpx file
-      --max-diff INTEGER  maximum difference from gpx timestamp to image time (in
-                          seconds)
+      --coords PATH       gpx or (google-history-)json file
+      --max-diff INTEGER  maximum difference from gpx timestamp to
+                          image time (in seconds)
       --allow-overwrite   allow overwrite
       --help              Show this message and exit.
 
