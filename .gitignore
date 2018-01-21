@@ -2,3 +2,5 @@
 env/
 test_images
 *.gpx
+__pycache__/
+Location History.json
